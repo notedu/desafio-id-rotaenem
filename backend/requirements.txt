@@ -1,0 +1,5 @@
+fastapi[standard]
+psycopg[binary]
+pymongo
+duckdb
+pydantic-settings

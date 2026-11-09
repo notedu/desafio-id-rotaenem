@@ -1,0 +1,30 @@
+[
+  {
+    "_id": "yt_videoExemplo123",
+    "tipo": "video",
+    "area": "MT",
+    "topico": "Função quadrática",
+    "titulo": "Função quadrática para o ENEM",
+    "canal": "Canal de exemplo",
+    "url": "https://www.youtube.com/watch?v=videoExemplo123",
+    "fonte": "youtube",
+    "coletado_em": {
+      "$date": "2026-11-09T12:00:00Z"
+    }
+  },
+  {
+    "_id": "gb_livroExemplo123",
+    "tipo": "livro",
+    "area": "MT",
+    "topico": "Função quadrática",
+    "titulo": "Matemática para o ENEM",
+    "autores": [
+      "Autor de exemplo"
+    ],
+    "url": "https://books.google.com/books?id=livroExemplo123",
+    "fonte": "google_books",
+    "coletado_em": {
+      "$date": "2026-11-09T12:05:00Z"
+    }
+  }
+]
