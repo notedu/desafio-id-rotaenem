@@ -3,3 +3,4 @@ psycopg[binary]
 pymongo
 duckdb
 pydantic-settings
+python-dotenv

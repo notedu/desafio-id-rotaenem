@@ -58,11 +58,13 @@ O desenho prevê que o Apache Hop trate os microdados do INEP e colete conteúdo
 ```text
 .
 ├── backend/
+│   ├── .env.example
 │   ├── database/
 │   │   ├── duckdb/
 │   │   │   ├── db.py
 │   │   │   └── schema.sql
 │   │   ├── postgres/
+│   │   │   ├── check_connection.py
 │   │   │   ├── schema.sql
 │   │   │   └── seed.sql
 │   │   └── mongodb/
@@ -109,6 +111,16 @@ python -m pip install -r backend/requirements.txt
 ```
 
 Ainda não há um comando para iniciar a API: ele será documentado quando o ponto de entrada e as rotas do backend forem criados.
+
+## Verificar a conexão com o Neon
+
+Configure `DATABASE_URL` em `backend/.env` com a URI de conexão do Neon. Com as dependências do backend instaladas, execute na raiz do repositório:
+
+```bash
+python backend/database/postgres/check_connection.py
+```
+
+O script informa o banco, o usuário conectado, a versão do PostgreSQL e a quantidade de tabelas no schema `public`, sem imprimir a URI ou a senha.
 
 ## Bancos, Apache Hop e credenciais
 
