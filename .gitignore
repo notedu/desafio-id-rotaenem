@@ -326,3 +326,6 @@ thumb
 sketch
 
 # End of https://www.toptal.com/developers/gitignore/api/python,node,react
+
+# Dados brutos baixados localmente (não versionar arquivos grandes)
+backend/data/raw/
