@@ -1,0 +1,22 @@
+import { areas } from '../dados/dadosEstudo'
+import type { Page } from '../tipos/navegacao'
+import { Icon } from '../componentes/Icone'
+import { PageHeader } from '../componentes/CabecalhoPagina'
+import { StatCard } from '../componentes/CartaoEstatistica'
+import { TaskCard } from '../componentes/CartaoTarefa'
+
+type Props = { onNewSimulado: () => void; onNavigate: (page: Page) => void }
+
+export function HomePage({ onNewSimulado, onNavigate }: Props) {
+  return <>
+    <PageHeader eyebrow="SEGUNDA-FEIRA, 9 DE NOVEMBRO" title={<>Bom dia, Mariana <span className="wave">✳</span></>} description="Cada sessão de estudo te deixa mais perto do seu objetivo." action={<button className="button-primary" onClick={onNewSimulado}><Icon name="plus" size={17} /> Registrar simulado</button>} />
+    <section className="hero-card"><div className="hero-content"><div className="hero-kicker"><Icon name="target" size={15} /> SUA JORNADA</div><h2>Seu objetivo tem nome:<br /><span>Medicina na USP.</span></h2><p>Você já está construindo o caminho. Continue avançando no seu ritmo.</p><button className="hero-link" onClick={() => onNavigate('meta')}>Ver minha meta <Icon name="arrow" size={16} /></button></div><div className="hero-progress"><div className="progress-ring"><div className="progress-ring-inner"><strong>68<span>%</span></strong><small>do caminho</small></div></div><div className="hero-progress-caption"><strong>Você está evoluindo!</strong><span>Faltam 214 dias para o ENEM</span></div></div><div className="hero-orb orb-one" /><div className="hero-orb orb-two" /></section>
+    <section className="stats-row"><StatCard icon="chart" label="MÉDIA ATUAL" value="642" suffix="pts" detail="+18 pontos" positive /><StatCard icon="target" label="SUA META" value="720" suffix="pts" detail="78 pontos para chegar" /><StatCard icon="clock" label="ESTUDADO ESTA SEMANA" value="12,5" suffix="h" detail="de 18 horas planejadas" /></section>
+    <section className="content-grid">
+      <div className="panel performance-panel"><div className="panel-heading"><div><span className="eyebrow">VISÃO GERAL</span><h2>Seu desempenho</h2></div><button className="select-button" onClick={() => onNavigate('desempenho')}>Por área <span>⌄</span></button></div><div className="performance-chart"><div className="chart-y-labels"><span>800</span><span>600</span><span>400</span><span>200</span><span>0</span></div><div className="chart-main"><div className="chart-grid-lines"><i /><i /><i /><i /><i /></div><div className="chart-bars">{areas.map((area) => <div className="bar-group" key={area.short}><div className="bar-pair"><div className="bar goal-bar" style={{ height: `${area.goal / 8}%` }} /><div className="bar score-bar" style={{ height: `${area.score / 8}%`, background: area.color }} /></div><span>{area.short}</span></div>)}</div><div className="chart-legend"><span><i className="legend-score" />Sua nota</span><span><i className="legend-goal" />Meta</span></div></div></div></div>
+      <div className="panel priority-panel"><div className="panel-heading"><div><span className="eyebrow">MELHOR OPORTUNIDADE</span><h2>Foco da semana</h2></div><span className="priority-badge">PRIORIDADE 01</span></div><div className="priority-feature"><span className="priority-icon">∑</span><div><strong>Matemática</strong><span>Você está a 140 pts da sua meta</span></div><span className="priority-number">01</span></div><div className="priority-reason"><Icon name="spark" size={16} /> Maior peso para o curso que você escolheu</div><button className="text-link" onClick={() => onNavigate('plano')}>Ver plano de estudos <Icon name="arrow" size={15} /></button></div>
+    </section>
+    <section className="panel week-panel"><div className="panel-heading"><div><span className="eyebrow">SEMANA 09 — 15 NOV</span><h2>Seu plano de estudos</h2></div><button className="text-link" onClick={() => onNavigate('plano')}>Ver semana completa <Icon name="arrow" size={15} /></button></div><div className="week-tasks"><TaskCard day="HOJE · SEG" subject="Matemática" topic="Função quadrática" time="09:00 — 10:30" color="blue" done /><TaskCard day="HOJE · SEG" subject="Ciências da Natureza" topic="Estequiometria" time="14:00 — 15:30" color="green" /><TaskCard day="AMANHÃ · TER" subject="Redação" topic="Competência 2: repertório" time="10:00 — 11:00" color="coral" /></div></section>
+    <footer className="page-footer"><span>Feito para a sua jornada, com dados e propósito.</span><span>RotaENEM <b>·</b> 2026</span></footer>
+  </>
+}
