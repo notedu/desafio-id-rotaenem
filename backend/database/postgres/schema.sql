@@ -88,7 +88,10 @@ CREATE TABLE IF NOT EXISTS plano_item (
     area_id      INTEGER NOT NULL REFERENCES area_conhecimento(id),
     topico_id    INTEGER REFERENCES topico_estudo(id) ON DELETE SET NULL,
     horas        NUMERIC(4,1) NOT NULL,
+    prioridade   NUMERIC(12,2) NOT NULL DEFAULT 0,
     conteudo_ref TEXT,
+    data_sessao  DATE NOT NULL,
+    horario_inicio TIME NOT NULL,
     CONSTRAINT plano_item_horas_validas
         CHECK (horas > 0)
 );
@@ -104,3 +107,6 @@ CREATE INDEX IF NOT EXISTS idx_simulado_estudante_data
 
 CREATE INDEX IF NOT EXISTS idx_plano_item_plano
     ON plano_item(plano_id);
+
+CREATE INDEX IF NOT EXISTS idx_plano_item_agenda
+    ON plano_item(plano_id, data_sessao, horario_inicio);

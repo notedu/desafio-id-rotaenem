@@ -1,6 +1,9 @@
 fastapi[standard]
-psycopg[binary]
+psycopg[binary,pool]
 pymongo
 duckdb==1.5.6
 pydantic-settings
 python-dotenv
+email-validator
+pwdlib[argon2]
+pyjwt
